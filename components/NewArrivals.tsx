@@ -3,51 +3,51 @@
 import React, { useRef, useState, useEffect } from 'react'
 import UniversalCard from './UniversalCard'
 
-const ShopByCategory = () => {
+const NewArrivals = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
 
-  const categories = [
+  const products = [
     {
-      name: 'Medicines',
-      icon: '💊',
-      href: '/category/medicines'
+      name: 'Advanced Probiotic',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/advanced-probiotic'
     },
     {
-      name: 'Vaccines',
-      icon: '💉',
-      href: '/category/vaccines'
+      name: 'Immune Booster Plus',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/immune-booster-plus'
     },
     {
-      name: 'Dewormers',
-      icon: '🐛',
-      href: '/category/dewormers'
+      name: 'Fast Acting Antipyretic',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/fast-acting-antipyretic'
     },
     {
-      name: 'Supplements & Tonics',
-      icon: '🌿',
-      href: '/category/supplements'
+      name: 'Premium Vitamin Complex',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/premium-vitamin-complex'
     },
     {
-      name: 'Injections',
-      icon: '💉',
-      href: '/category/injections'
+      name: 'Rapid Recovery Tonic',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/rapid-recovery-tonic'
     },
     {
-      name: 'Antibiotics',
-      icon: '💊',
-      href: '/category/antibiotics'
+      name: 'Advanced Wound Care',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/advanced-wound-care'
     },
     {
-      name: 'Antiparasitic',
-      icon: '🦠',
-      href: '/category/antiparasitic'
+      name: 'Hormone Regulator',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/hormone-regulator'
     },
     {
-      name: 'Disinfectants',
-      icon: '🧴',
-      href: '/category/disinfectants'
+      name: 'Digestive Enzyme Complex',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/digestive-enzyme-complex'
     }
   ]
 
@@ -86,7 +86,18 @@ const ShopByCategory = () => {
   return (
     <div className="bg-white py-4 sm:py-6 md:py-8">
       <div className="max-w-container mx-auto px-4">
-        <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Shop by Category</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-primary">New Arrivals</h2>
+          <a
+            href="/products/new-arrivals"
+            className="text-primary hover:text-primary-dark font-semibold text-sm flex items-center gap-1 transition-colors"
+          >
+            View All Products
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
         <div className="relative">
           {/* Left Arrow Button */}
           {canScrollLeft && (
@@ -107,12 +118,13 @@ const ShopByCategory = () => {
             className="flex gap-3 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {categories.map((category, index) => (
+            {products.map((product, index) => (
               <div key={index} className="flex-shrink-0 w-[160px]">
                 <UniversalCard
-                  icon={category.icon}
-                  title={category.name}
-                  href={category.href}
+                  image={product.image}
+                  title={product.name}
+                  badge="New"
+                  href={product.href}
                   className="text-sm"
                 />
               </div>
@@ -137,5 +149,5 @@ const ShopByCategory = () => {
   )
 }
 
-export default ShopByCategory
+export default NewArrivals
 

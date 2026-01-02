@@ -3,51 +3,51 @@
 import React, { useRef, useState, useEffect } from 'react'
 import UniversalCard from './UniversalCard'
 
-const ShopByCategory = () => {
+const BestSellers = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
 
-  const categories = [
+  const products = [
     {
-      name: 'Medicines',
-      icon: '💊',
-      href: '/category/medicines'
+      name: 'Calcium Supplement',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/calcium-supplement'
     },
     {
-      name: 'Vaccines',
-      icon: '💉',
-      href: '/category/vaccines'
+      name: 'Liver Tonic',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/liver-tonic'
     },
     {
-      name: 'Dewormers',
-      icon: '🐛',
-      href: '/category/dewormers'
+      name: 'Mineral Mixture',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/mineral-mixture'
     },
     {
-      name: 'Supplements & Tonics',
-      icon: '🌿',
-      href: '/category/supplements'
+      name: 'Energy Booster',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/energy-booster'
     },
     {
-      name: 'Injections',
-      icon: '💉',
-      href: '/category/injections'
+      name: 'Multi-Vitamin',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/multi-vitamin'
     },
     {
-      name: 'Antibiotics',
-      icon: '💊',
-      href: '/category/antibiotics'
+      name: 'Dewormer Solution',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/dewormer'
     },
     {
-      name: 'Antiparasitic',
-      icon: '🦠',
-      href: '/category/antiparasitic'
+      name: 'Antibiotic Injection',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/antibiotic-injection'
     },
     {
-      name: 'Disinfectants',
-      icon: '🧴',
-      href: '/category/disinfectants'
+      name: 'Mastitis Treatment',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
+      href: '/products/mastitis-treatment'
     }
   ]
 
@@ -84,9 +84,20 @@ const ShopByCategory = () => {
   }
 
   return (
-    <div className="bg-white py-4 sm:py-6 md:py-8">
+    <div className="bg-gray-50 py-4 sm:py-6 md:py-8">
       <div className="max-w-container mx-auto px-4">
-        <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Shop by Category</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-primary">Best Sellers</h2>
+          <a
+            href="/products/best-sellers"
+            className="text-primary hover:text-primary-dark font-semibold text-sm flex items-center gap-1 transition-colors"
+          >
+            View All Products
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
         <div className="relative">
           {/* Left Arrow Button */}
           {canScrollLeft && (
@@ -107,12 +118,13 @@ const ShopByCategory = () => {
             className="flex gap-3 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {categories.map((category, index) => (
+            {products.map((product, index) => (
               <div key={index} className="flex-shrink-0 w-[160px]">
                 <UniversalCard
-                  icon={category.icon}
-                  title={category.name}
-                  href={category.href}
+                  image={product.image}
+                  title={product.name}
+                  badge="Best Seller"
+                  href={product.href}
                   className="text-sm"
                 />
               </div>
@@ -137,5 +149,5 @@ const ShopByCategory = () => {
   )
 }
 
-export default ShopByCategory
+export default BestSellers
 

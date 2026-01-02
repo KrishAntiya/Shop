@@ -8,18 +8,26 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Primary color - Soft teal-blue for veterinary/medical feel (WCAG AA compliant)
+        // Primary Action Color - Deep Blue (CTAs only)
         primary: {
-          DEFAULT: '#4A9B9B', // Soft teal-blue - calming, medical (contrast: 4.8:1 on white)
-          dark: '#3A7A7A',    // Darker for hover states (contrast: 6.2:1 on white)
-          light: '#6BB3B3',   // Lighter variant for gradients
-          bg: '#E8F4F4',      // Very light teal background tint
+          DEFAULT: '#1E3A8A', // Deep Blue - Primary action color (WCAG AA: 8.6:1 on white)
+          dark: '#1D4ED8',    // Hover state (WCAG AA: 7.2:1 on white)
+          light: '#3B82F6',   // Lighter variant for subtle accents
         },
-        // Secondary color - Soft accent for highlights
+        // Secondary / Brand Accent - Veterinary Green
         secondary: {
-          DEFAULT: '#D97757', // Soft coral/terracotta (WCAG AA on white: 4.5:1)
-          light: '#E8A088',   // Lighter variant
+          DEFAULT: '#2E7D32', // Veterinary Green (WCAG AA: 5.8:1 on white)
+          light: '#E8F5E9',   // Light Green Tint for backgrounds
         },
+        // Neutrals for structure & readability
+        neutral: {
+          text: '#1F2937',    // Primary text (WCAG AAA: 12.6:1 on white)
+          'text-secondary': '#4B5563', // Secondary text (WCAG AA: 7.0:1 on white)
+          border: '#E5E7EB',  // Borders
+          bg: '#F9FAFB',      // Background
+        },
+        // Convenience aliases for backward compatibility
+        'primary-bg': '#E8F5E9', // Light green tint (secondary.light)
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

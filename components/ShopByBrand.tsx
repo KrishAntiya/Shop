@@ -3,51 +3,51 @@
 import React, { useRef, useState, useEffect } from 'react'
 import UniversalCard from './UniversalCard'
 
-const ShopByCategory = () => {
+const ShopByBrand = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
 
-  const categories = [
+  const brands = [
     {
-      name: 'Medicines',
-      icon: '💊',
-      href: '/category/medicines'
+      name: 'Indian Immunologicals',
+      image: '/Indian Immunologicals.png',
+      href: '/brands/indian-immunologicals'
     },
     {
-      name: 'Vaccines',
-      icon: '💉',
-      href: '/category/vaccines'
+      name: 'Intas Animal Health',
+      image: '/Intas Animal Health.png',
+      href: '/brands/intas'
     },
     {
-      name: 'Dewormers',
-      icon: '🐛',
-      href: '/category/dewormers'
+      name: 'Zydus Animal Health',
+      image: 'https://via.placeholder.com/400x400/4A90E2/FFFFFF?text=Zydus',
+      href: '/brands/zydus'
     },
     {
-      name: 'Supplements & Tonics',
-      icon: '🌿',
-      href: '/category/supplements'
+      name: 'Zoetis India',
+      image: '/Zoetis India.svg',
+      href: '/brands/zoetis'
     },
     {
-      name: 'Injections',
-      icon: '💉',
-      href: '/category/injections'
+      name: 'Boehringer Ingelheim',
+      image: '/Boehringer Ingelheim.svg',
+      href: '/brands/boehringer'
     },
     {
-      name: 'Antibiotics',
-      icon: '💊',
-      href: '/category/antibiotics'
+      name: 'Elanco Animal Health',
+      image: 'https://via.placeholder.com/400x400/4A90E2/FFFFFF?text=Elanco',
+      href: '/brands/elanco'
     },
     {
-      name: 'Antiparasitic',
-      icon: '🦠',
-      href: '/category/antiparasitic'
+      name: 'Virbac Animal Health',
+      image: '/Virbac Animal Health.svg',
+      href: '/brands/virbac'
     },
     {
-      name: 'Disinfectants',
-      icon: '🧴',
-      href: '/category/disinfectants'
+      name: 'Hester Biosciences',
+      image: '/Hester Biosciences.jpg',
+      href: '/brands/hester'
     }
   ]
 
@@ -84,9 +84,20 @@ const ShopByCategory = () => {
   }
 
   return (
-    <div className="bg-white py-4 sm:py-6 md:py-8">
+    <div className="bg-gray-50 py-4 sm:py-6 md:py-8">
       <div className="max-w-container mx-auto px-4">
-        <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Shop by Category</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-primary">Shop by Brand</h2>
+          <a
+            href="/brands"
+            className="text-primary hover:text-primary-dark font-semibold text-sm flex items-center gap-1 transition-colors"
+          >
+            View All Brands
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
         <div className="relative">
           {/* Left Arrow Button */}
           {canScrollLeft && (
@@ -107,12 +118,12 @@ const ShopByCategory = () => {
             className="flex gap-3 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {categories.map((category, index) => (
+            {brands.map((brand, index) => (
               <div key={index} className="flex-shrink-0 w-[160px]">
                 <UniversalCard
-                  icon={category.icon}
-                  title={category.name}
-                  href={category.href}
+                  image={brand.image}
+                  title={brand.name}
+                  href={brand.href}
                   className="text-sm"
                 />
               </div>
@@ -137,5 +148,5 @@ const ShopByCategory = () => {
   )
 }
 
-export default ShopByCategory
+export default ShopByBrand
 

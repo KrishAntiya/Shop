@@ -5,7 +5,7 @@ import Logo from './Logo'
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-dark text-white">
+    <footer className="bg-primary text-white">
       <div className="max-w-container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {/* Company Info */}
@@ -26,8 +26,8 @@ const Footer = () => {
             <ul className="flex flex-col gap-2 text-white text-opacity-80">
               <li><a href="#" className="hover:text-white transition">About Us</a></li>
               <li><a href="#" className="hover:text-white transition">Track Order</a></li>
-              <li><a href="#" className="hover:text-white transition">Returns & Refunds</a></li>
-              <li><a href="#" className="hover:text-white transition">Shipping Policy</a></li>
+              <li><a href="/returns-and-refunds" className="hover:text-white transition">Returns & Refunds</a></li>
+              <li><a href="/shipping-policy" className="hover:text-white transition">Shipping Policy</a></li>
               <li><a href="#" className="hover:text-white transition">FAQ</a></li>
               <li><a href="#" className="hover:text-white transition">Vet Consultation</a></li>
             </ul>
@@ -44,7 +44,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-white transition">Vaccines</a></li>
               <li><a href="#" className="hover:text-white transition">Supplements</a></li>
             </ul>
-          </div>
+        </div>
 
           {/* Contact Information */}
           <div className="flex flex-col gap-4">
@@ -52,27 +52,27 @@ const Footer = () => {
             <div className="flex flex-col gap-3 text-white text-opacity-80">
               <div className="flex items-start gap-3">
                 <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
                 <div className="flex flex-col">
                   <span className="font-medium text-white">1800-SWASTIK</span>
                   <span className="text-sm">Toll Free (24/7)</span>
                 </div>
-              </div>
+            </div>
               <div className="flex items-start gap-3">
                 <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
                 <div className="flex flex-col">
                   <a href="mailto:support@swastikpharma.in" className="font-medium text-white hover:underline">support@swastikpharma.in</a>
                   <a href="mailto:sales@swastikpharma.in" className="text-sm hover:text-white">sales@swastikpharma.in</a>
                 </div>
-              </div>
+            </div>
               <div className="flex items-start gap-3">
                 <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                </svg>
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
                 <div className="flex flex-col">
                   <span>123 Geetanjali Complex, Opp Jilla Panchayat</span>
                   <span>Palanpur, Gujrat 385001</span>

@@ -3,51 +3,46 @@
 import React, { useRef, useState, useEffect } from 'react'
 import UniversalCard from './UniversalCard'
 
-const ShopByCategory = () => {
+const ShopByHealthProblem = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
 
-  const categories = [
+  const healthProblems = [
     {
-      name: 'Medicines',
-      icon: '💊',
-      href: '/category/medicines'
+      name: 'Mastitis',
+      icon: '🐄',
+      href: '/health-problems/mastitis'
     },
     {
-      name: 'Vaccines',
-      icon: '💉',
-      href: '/category/vaccines'
+      name: 'Fever',
+      icon: '🌡️',
+      href: '/health-problems/fever'
     },
     {
-      name: 'Dewormers',
-      icon: '🐛',
-      href: '/category/dewormers'
+      name: 'Digestive Problems',
+      icon: '🫄',
+      href: '/health-problems/digestive'
     },
     {
-      name: 'Supplements & Tonics',
-      icon: '🌿',
-      href: '/category/supplements'
-    },
-    {
-      name: 'Injections',
-      icon: '💉',
-      href: '/category/injections'
-    },
-    {
-      name: 'Antibiotics',
-      icon: '💊',
-      href: '/category/antibiotics'
-    },
-    {
-      name: 'Antiparasitic',
+      name: 'Skin Infections',
       icon: '🦠',
-      href: '/category/antiparasitic'
+      href: '/health-problems/skin'
     },
     {
-      name: 'Disinfectants',
-      icon: '🧴',
-      href: '/category/disinfectants'
+      name: 'Fertility & Reproduction',
+      icon: '👶',
+      href: '/health-problems/fertility'
+    },
+    {
+      name: 'Respiratory Issues',
+      icon: '🫁',
+      href: '/health-problems/respiratory'
+    },
+    {
+      name: 'Calcium Deficiency',
+      icon: '🦴',
+      href: '/health-problems/calcium'
     }
   ]
 
@@ -86,7 +81,7 @@ const ShopByCategory = () => {
   return (
     <div className="bg-white py-4 sm:py-6 md:py-8">
       <div className="max-w-container mx-auto px-4">
-        <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Shop by Category</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Shop by Health Problem</h2>
         <div className="relative">
           {/* Left Arrow Button */}
           {canScrollLeft && (
@@ -107,12 +102,12 @@ const ShopByCategory = () => {
             className="flex gap-3 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {categories.map((category, index) => (
+            {healthProblems.map((problem, index) => (
               <div key={index} className="flex-shrink-0 w-[160px]">
                 <UniversalCard
-                  icon={category.icon}
-                  title={category.name}
-                  href={category.href}
+                  icon={problem.icon}
+                  title={problem.name}
+                  href={problem.href}
                   className="text-sm"
                 />
               </div>
@@ -137,5 +132,5 @@ const ShopByCategory = () => {
   )
 }
 
-export default ShopByCategory
+export default ShopByHealthProblem
 

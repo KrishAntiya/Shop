@@ -2,8 +2,11 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import ShopByAnimal from '@/components/ShopByAnimal'
 import ShopByCategory from '@/components/ShopByCategory'
-import FeaturedProducts from '@/components/FeaturedProducts'
-import Services from '@/components/Services'
+import ShopByBrand from '@/components/ShopByBrand'
+import ShopByHealthProblem from '@/components/ShopByHealthProblem'
+import BestSellers from '@/components/BestSellers'
+import NewArrivals from '@/components/NewArrivals'
+import WhyChooseUs from '@/components/WhyChooseUs'
 import Newsletter from '@/components/Newsletter'
 import Footer from '@/components/Footer'
 
@@ -14,8 +17,11 @@ export default function Home() {
       <Hero />
       <ShopByAnimal />
       <ShopByCategory />
-      <FeaturedProducts />
-      <Services />
+      <ShopByBrand />
+      <ShopByHealthProblem />
+      <BestSellers />
+      <NewArrivals />
+      <WhyChooseUs />
       <Newsletter />
       <Footer />
     </main>

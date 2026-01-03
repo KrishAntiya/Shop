@@ -4,6 +4,7 @@ import ShopByAnimal from '@/components/ShopByAnimal'
 import ShopByCategory from '@/components/ShopByCategory'
 import ShopByBrand from '@/components/ShopByBrand'
 import ShopByHealthProblem from '@/components/ShopByHealthProblem'
+import FeaturedProducts from '@/components/FeaturedProducts'
 import BestSellers from '@/components/BestSellers'
 import NewArrivals from '@/components/NewArrivals'
 import WhyChooseUs from '@/components/WhyChooseUs'
@@ -19,6 +20,7 @@ export default function Home() {
       <ShopByCategory />
       <ShopByBrand />
       <ShopByHealthProblem />
+      <FeaturedProducts />
       <BestSellers />
       <NewArrivals />
       <WhyChooseUs />

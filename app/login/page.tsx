@@ -1,11 +1,15 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function LoginPage() {
+  const router = useRouter()
+  const { login } = useAuth()
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -15,8 +19,10 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle login logic here
+    // Handle login logic here - for now, just simulate successful login
     console.log('Login:', formData)
+    login()
+    router.push('/') // Redirect to home page after login
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

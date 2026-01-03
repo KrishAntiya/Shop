@@ -8,7 +8,7 @@ const ShippingPolicy = () => {
       <Header />
       <div className="py-8 sm:py-12 md:py-16">
         <div className="max-w-container mx-auto px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-6 md:mb-8">Shipping Policy</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-6 md:mb-8">Shipping Policy</h1>
           
           <div className="bg-white rounded-lg shadow-md p-6 sm:p-8 md:p-10 space-y-8">
             {/* Introduction */}
@@ -22,7 +22,7 @@ const ShippingPolicy = () => {
 
             {/* Shipping Areas */}
             <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Shipping Areas</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Shipping Areas</h2>
               <div className="space-y-4">
                 <p className="text-gray-700 leading-relaxed">
                   We ship to all locations across India, including:
@@ -41,7 +41,7 @@ const ShippingPolicy = () => {
 
             {/* Order Processing Time */}
             <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Order Processing Time</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Order Processing Time</h2>
               <div className="space-y-4">
                 <p className="text-gray-700 leading-relaxed">
                   All orders are processed within <strong>1-2 business days</strong> from the date of order confirmation. 
@@ -64,7 +64,7 @@ const ShippingPolicy = () => {
 
             {/* Delivery Timeframes */}
             <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Delivery Timeframes</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Delivery Timeframes</h2>
               <div className="space-y-4">
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse border border-neutral-border">
@@ -103,17 +103,17 @@ const ShippingPolicy = () => {
 
             {/* Shipping Charges */}
             <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Shipping Charges</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Shipping Charges</h2>
               <div className="space-y-4">
                 <div className="bg-primary-bg rounded-lg p-4">
-                  <h3 className="text-xl font-semibold text-neutral-text mb-3">Free Shipping</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-text mb-3">Free Shipping</h3>
                   <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
                     <li>Orders above <strong>₹999</strong> qualify for free standard shipping</li>
                     <li>Applicable to all locations across India</li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-neutral-text mb-3">Standard Shipping Charges</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-text mb-3">Standard Shipping Charges</h3>
                   <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
                     <li>Metro & Tier 1 Cities: <strong>₹49</strong> for orders below ₹999</li>
                     <li>Tier 2 & Tier 3 Cities: <strong>₹79</strong> for orders below ₹999</li>
@@ -121,7 +121,7 @@ const ShippingPolicy = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-neutral-text mb-3">Express Shipping (Optional)</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-text mb-3">Express Shipping (Optional)</h3>
                   <p className="text-gray-700 leading-relaxed mb-2">
                     For urgent orders, express shipping is available at an additional charge:
                   </p>
@@ -136,10 +136,10 @@ const ShippingPolicy = () => {
 
             {/* Special Handling */}
             <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Special Handling for Veterinary Products</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Special Handling for Veterinary Products</h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-xl font-semibold text-neutral-text mb-2">Temperature-Sensitive Products</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-text mb-2">Temperature-Sensitive Products</h3>
                   <p className="text-gray-700 leading-relaxed mb-2">
                     Vaccines and certain antibiotics require cold chain storage and transportation:
                   </p>
@@ -152,7 +152,7 @@ const ShippingPolicy = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-neutral-text mb-2">Prescription Medicines</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-text mb-2">Prescription Medicines</h3>
                   <p className="text-gray-700 leading-relaxed mb-2">
                     Prescription medicines are handled with extra care:
                   </p>
@@ -164,7 +164,7 @@ const ShippingPolicy = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-neutral-text mb-2">Fragile Items</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-text mb-2">Fragile Items</h3>
                   <p className="text-gray-700 leading-relaxed mb-2">
                     Glass containers and delicate equipment are packed with extra protection:
                   </p>
@@ -179,7 +179,7 @@ const ShippingPolicy = () => {
 
             {/* Delivery Process */}
             <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Delivery Process</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Delivery Process</h2>
               <ol className="list-decimal list-inside text-gray-700 space-y-3 ml-4">
                 <li>
                   <strong>Order Confirmation:</strong> You will receive an email/SMS confirmation with your order number
@@ -204,7 +204,7 @@ const ShippingPolicy = () => {
 
             {/* Order Tracking */}
             <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Track Your Order</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Track Your Order</h2>
               <div className="space-y-4">
                 <p className="text-gray-700 leading-relaxed">
                   Once your order is shipped, you can track its status:
@@ -220,10 +220,10 @@ const ShippingPolicy = () => {
 
             {/* Delivery Issues */}
             <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Delivery Issues & Support</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Delivery Issues & Support</h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-xl font-semibold text-neutral-text mb-2">Failed Delivery Attempts</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-text mb-2">Failed Delivery Attempts</h3>
                   <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
                     <li>Delivery partner will attempt delivery up to 3 times</li>
                     <li>Please provide accurate contact information and address</li>
@@ -232,7 +232,7 @@ const ShippingPolicy = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-neutral-text mb-2">Damaged Package</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-text mb-2">Damaged Package</h3>
                   <p className="text-gray-700 leading-relaxed mb-2">
                     If you receive a damaged package:
                   </p>
@@ -244,7 +244,7 @@ const ShippingPolicy = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-neutral-text mb-2">Missing or Delayed Orders</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-text mb-2">Missing or Delayed Orders</h3>
                   <p className="text-gray-700 leading-relaxed mb-2">
                     If your order is delayed or missing:
                   </p>
@@ -260,7 +260,7 @@ const ShippingPolicy = () => {
 
             {/* Cash on Delivery */}
             <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Cash on Delivery (COD)</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Cash on Delivery (COD)</h2>
               <div className="space-y-4">
                 <p className="text-gray-700 leading-relaxed">
                   We offer Cash on Delivery for orders across India with the following terms:
@@ -277,7 +277,7 @@ const ShippingPolicy = () => {
 
             {/* Contact Information */}
             <section className="bg-primary-bg rounded-lg p-6">
-              <h2 className="text-2xl font-semibold text-primary mb-4">Shipping Inquiries</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-3">Shipping Inquiries</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 For any questions about shipping, delivery, or tracking, please contact our customer support:
               </p>

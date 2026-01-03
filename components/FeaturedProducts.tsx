@@ -3,7 +3,7 @@
 import React from 'react'
 import ProductCard from './ProductCard'
 
-const BestSellers = () => {
+const FeaturedProducts = () => {
   const products = [
     {
       name: 'Calcium Supplement for Cattle',
@@ -52,13 +52,13 @@ const BestSellers = () => {
   ]
 
   return (
-    <div className="bg-neutral-bg py-4 sm:py-6 md:py-8">
+    <div className="bg-white py-4 sm:py-6 md:py-8">
       <div className="max-w-container mx-auto px-4">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl sm:text-2xl font-bold text-primary">Best Sellers</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-primary">Featured Products</h2>
           <a
-            href="/products/best-sellers"
+            href="/products"
             className="text-primary hover:text-primary-dark font-semibold text-sm flex items-center gap-1 transition-colors"
           >
             View All Products
@@ -90,5 +90,5 @@ const BestSellers = () => {
   )
 }
 
-export default BestSellers
+export default FeaturedProducts
 

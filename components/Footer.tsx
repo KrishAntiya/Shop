@@ -29,7 +29,6 @@ const Footer = () => {
               <li><a href="/returns-and-refunds" className="hover:text-white transition">Returns & Refunds</a></li>
               <li><a href="/shipping-policy" className="hover:text-white transition">Shipping Policy</a></li>
               <li><a href="#" className="hover:text-white transition">FAQ</a></li>
-              <li><a href="#" className="hover:text-white transition">Vet Consultation</a></li>
             </ul>
           </div>
 

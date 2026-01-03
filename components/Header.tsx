@@ -3,8 +3,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Logo from './Logo'
 import { useHeaderScroll } from '../hooks/useHeaderScroll'
+import { useAuth } from '@/contexts/AuthContext'
 
 const Header = () => {
+  const { isAuthenticated } = useAuth()
   const [deliveryLocation, setDeliveryLocation] = useState('Delhi, 110001')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false)
@@ -123,12 +125,12 @@ const Header = () => {
 
         {/* Logo, Search, Account, Cart Row */}
         <div className="max-w-container mx-auto px-4 py-3 md:py-4">
-          <div className="flex items-center justify-between gap-6 md:gap-8">
+          <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-6 lg:gap-8">
             {/* Logo */}
             <Logo 
               size="sm" 
               showText={true}
-              className="flex-shrink-0"
+              className="flex-shrink-0 min-w-0"
             />
 
             {/* Delivery Address Selector */}
@@ -142,11 +144,11 @@ const Header = () => {
             </button>
 
             {/* Mobile Delivery Address */}
-            <button className="md:hidden flex items-center gap-1 px-2 py-1.5 bg-neutral-bg rounded-lg hover:bg-primary/5 transition-all duration-200">
-              <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <button className="md:hidden flex items-center gap-1 px-2 py-1.5 bg-neutral-bg rounded-lg hover:bg-primary/5 transition-all duration-200 flex-shrink-0">
+              <svg className="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
-              <span className="text-xs font-medium text-neutral-text">{deliveryLocation.split(',')[0]}</span>
+              <span className="text-xs font-medium text-neutral-text whitespace-nowrap">{deliveryLocation.split(',')[0]}</span>
             </button>
 
             {/* Search Bar - Desktop */}
@@ -177,57 +179,61 @@ const Header = () => {
             </button>
 
             {/* Account & Cart Icons */}
-            <div className="flex items-center gap-2 md:gap-3">
-              {/* Login & Signup Buttons */}
-              <div className="hidden sm:flex items-center gap-2 border-r border-gray-200 pr-3 mr-2">
-                <a 
-                  href="/login" 
-                  className="px-3 py-2 text-sm font-medium text-neutral-text hover:text-primary transition-colors duration-200"
-                >
-                  Login
-                </a>
-                <a 
-                  href="/signup" 
-                  className="px-4 py-2 text-sm font-medium bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 ease-in-out hover:scale-105 active:scale-95"
-                >
-                  Sign Up
-                </a>
-              </div>
+            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+              {/* Login & Signup Buttons - Desktop - Only show when NOT authenticated */}
+              {!isAuthenticated && (
+                <div className="hidden sm:flex items-center gap-2 border-r border-gray-200 pr-3 mr-2">
+                  <a 
+                    href="/login" 
+                    className="px-3 py-2 text-sm font-medium text-neutral-text hover:text-primary transition-colors duration-200 whitespace-nowrap"
+                  >
+                    Login
+                  </a>
+                  <a 
+                    href="/signup" 
+                    className="px-4 py-2 text-sm font-medium bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 whitespace-nowrap"
+                  >
+                    Sign Up
+                  </a>
+                </div>
+              )}
               
-              {/* Mobile Login/Signup */}
-              <div className="sm:hidden flex items-center gap-1">
+              {/* Mobile Login Icon - Only show when NOT authenticated */}
+              {!isAuthenticated && (
                 <a 
                   href="/login" 
-                  className="p-2 hover:bg-neutral-bg rounded-full transition-all duration-200 ease-in-out min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="sm:hidden p-1.5 hover:bg-neutral-bg rounded-full transition-all duration-200 ease-in-out flex items-center justify-center flex-shrink-0"
                   aria-label="Login"
                 >
                   <svg className="w-5 h-5 text-neutral-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </a>
-              </div>
+              )}
 
-              {/* User Profile Icon */}
-              <a 
-                href="/profile" 
-                className="p-2 hover:bg-neutral-bg rounded-full transition-all duration-200 ease-in-out hover:scale-110 active:scale-95 min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="Profile"
-              >
-                <svg className="w-5 h-5 md:w-6 md:h-6 text-neutral-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </a>
+              {/* User Profile Icon - Only show when authenticated */}
+              {isAuthenticated && (
+                <a 
+                  href="/profile" 
+                  className="p-1.5 sm:p-2 hover:bg-neutral-bg rounded-full transition-all duration-200 ease-in-out hover:scale-110 active:scale-95 flex items-center justify-center flex-shrink-0"
+                  aria-label="Profile"
+                >
+                  <svg className="w-5 h-5 text-neutral-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </a>
+              )}
               
               {/* Cart Icon */}
               <a
                 href="/cart"
-                className="relative p-2 hover:bg-neutral-bg rounded-full transition-all duration-200 ease-in-out hover:scale-110 active:scale-95 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                className="relative p-1.5 sm:p-2 hover:bg-neutral-bg rounded-full transition-all duration-200 ease-in-out hover:scale-110 active:scale-95 flex items-center justify-center flex-shrink-0"
                 aria-label="Shopping Cart"
               >
-                <svg className="w-5 h-5 md:w-6 md:h-6 text-neutral-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-neutral-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <span className="absolute top-0 right-0 w-5 h-5 bg-secondary text-white text-xs rounded-full flex items-center justify-center">3</span>
+                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 sm:w-5 sm:h-5 bg-secondary text-white text-[10px] sm:text-xs rounded-full flex items-center justify-center font-semibold">3</span>
               </a>
             </div>
           </div>

@@ -1,11 +1,15 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function SignupPage() {
+  const router = useRouter()
+  const { login } = useAuth()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,8 +27,14 @@ export default function SignupPage() {
       alert('Passwords do not match')
       return
     }
-    // Handle signup logic here
+    if (!agreeToTerms) {
+      alert('Please agree to the terms and conditions')
+      return
+    }
+    // Handle signup logic here - for now, just simulate successful signup
     console.log('Signup:', formData)
+    login()
+    router.push('/') // Redirect to home page after signup
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

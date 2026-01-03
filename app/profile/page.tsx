@@ -1,10 +1,14 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function ProfilePage() {
+  const router = useRouter()
+  const { logout } = useAuth()
   const [activeTab, setActiveTab] = useState('profile')
   const [isEditing, setIsEditing] = useState(false)
   
@@ -613,9 +617,20 @@ export default function ProfilePage() {
 
                   <div className="pt-6 border-t border-gray-200">
                     <h3 className="text-lg font-semibold text-red-600 mb-4">Danger Zone</h3>
-                    <button className="px-6 py-2 border-2 border-red-600 text-red-600 rounded-lg hover:bg-red-50 transition-colors font-medium">
-                      Delete Account
-                    </button>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <button
+                        onClick={() => {
+                          logout()
+                          router.push('/')
+                        }}
+                        className="px-6 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary/10 transition-colors font-medium"
+                      >
+                        Logout
+                      </button>
+                      <button className="px-6 py-2 border-2 border-red-600 text-red-600 rounded-lg hover:bg-red-50 transition-colors font-medium">
+                        Delete Account
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

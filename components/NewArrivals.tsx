@@ -1,66 +1,75 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from './ProductCard'
 
+interface Variant {
+  id: number
+  name: string
+  weight?: string | null
+  unit?: string | null
+  price: number
+  mrp: number
+  stock: number
+  is_default?: boolean
+}
+
+interface Product {
+  id: number
+  name: string
+  image: string
+  category: string
+  price: number
+  mrp: number
+  discount: number
+  rating: number
+  reviews: number
+  href: string
+  variants?: Variant[]
+}
+
 const NewArrivals = () => {
-  const products = [
-    {
-      name: 'Advanced Probiotic for Cattle',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
-      category: 'Supplements',
-      price: 699,
-      originalPrice: 899,
-      discount: 22,
-      rating: 4.7,
-      reviews: 923,
-      href: '/products/advanced-probiotic'
-    },
-    {
-      name: 'Immune Booster Plus',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
-      category: 'Medicines',
-      price: 549,
-      originalPrice: 699,
-      discount: 21,
-      rating: 4.8,
-      reviews: 1456,
-      href: '/products/immune-booster-plus'
-    },
-    {
-      name: 'Fast Acting Antipyretic',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
-      category: 'Medicines',
-      price: 399,
-      originalPrice: 499,
-      discount: 20,
-      rating: 4.6,
-      reviews: 678,
-      href: '/products/fast-acting-antipyretic'
-    },
-    {
-      name: 'Premium Vitamin Complex',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
-      category: 'Supplements',
-      price: 849,
-      originalPrice: 1099,
-      discount: 23,
-      rating: 4.9,
-      reviews: 1892,
-      href: '/products/premium-vitamin-complex'
-    },
-    {
-      name: 'Rapid Recovery Tonic',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
-      category: 'Medicines',
-      price: 449,
-      originalPrice: 599,
-      discount: 25,
-      rating: 4.7,
-      reviews: 1123,
-      href: '/products/rapid-recovery-tonic'
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
+
+  const fetchProducts = async () => {
+    try {
+      const res = await fetch('/api/products?limit=10&sort=created_at')
+      const data = await res.json()
+      if (data.success && data.products) {
+        setProducts(data.products.slice(0, 10))
+      }
+    } catch (err) {
+      console.error('Failed to fetch new arrivals:', err)
+    } finally {
+      setLoading(false)
     }
-  ]
+  }
+
+  if (loading) {
+    return (
+      <div className="bg-neutral-bg py-4 sm:py-6 md:py-8">
+        <div className="max-w-container mx-auto px-4">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-primary">New Arrivals</h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="bg-white animate-pulse rounded-lg h-64"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (products.length === 0) {
+    return null
+  }
 
   return (
     <div className="bg-neutral-bg py-4 sm:py-6 md:py-8">
@@ -81,18 +90,19 @@ const NewArrivals = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
-          {products.map((product, index) => (
+          {products.map((product) => (
             <ProductCard
-              key={index}
+              key={product.id}
               image={product.image}
               name={product.name}
-              category={product.category}
+              category={product.category || 'Uncategorized'}
               price={product.price}
-              originalPrice={product.originalPrice}
+              originalPrice={product.mrp > product.price ? product.mrp : undefined}
               discount={product.discount}
               rating={product.rating}
               reviews={product.reviews}
               href={product.href}
+              variants={product.variants || []}
             />
           ))}
         </div>

@@ -1,55 +1,75 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from './ProductCard'
 
+interface Variant {
+  id: number
+  name: string
+  weight?: string | null
+  unit?: string | null
+  price: number
+  mrp: number
+  stock: number
+  is_default?: boolean
+}
+
+interface Product {
+  id: number
+  name: string
+  image: string
+  category: string
+  price: number
+  mrp: number
+  discount: number
+  rating: number
+  reviews: number
+  href: string
+  variants?: Variant[]
+}
+
 const FeaturedProducts = () => {
-  const products = [
-    {
-      name: 'Calcium Supplement for Cattle',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
-      category: 'Supplements',
-      price: 599,
-      originalPrice: 799,
-      discount: 25,
-      rating: 4.8,
-      reviews: 1234,
-      href: '/products/calcium-supplement'
-    },
-    {
-      name: 'Liver Tonic Syrup',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
-      category: 'Medicines',
-      price: 349,
-      originalPrice: 449,
-      discount: 22,
-      rating: 4.7,
-      reviews: 856,
-      href: '/products/liver-tonic'
-    },
-    {
-      name: 'Mineral Mixture Powder',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
-      category: 'Supplements',
-      price: 899,
-      originalPrice: 1199,
-      discount: 25,
-      rating: 4.9,
-      reviews: 2108,
-      href: '/products/mineral-mixture'
-    },
-    {
-      name: 'Energy Booster Injection',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop',
-      category: 'Medicines',
-      price: 449,
-      originalPrice: 599,
-      discount: 25,
-      rating: 4.6,
-      reviews: 642,
-      href: '/products/energy-booster'
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
+
+  const fetchProducts = async () => {
+    try {
+      const res = await fetch('/api/products?limit=10&sort=created_at')
+      const data = await res.json()
+      if (data.success && data.products) {
+        setProducts(data.products.slice(0, 10))
+      }
+    } catch (err) {
+      console.error('Failed to fetch featured products:', err)
+    } finally {
+      setLoading(false)
     }
-  ]
+  }
+
+  if (loading) {
+    return (
+      <div className="bg-white py-4 sm:py-6 md:py-8">
+        <div className="max-w-container mx-auto px-4">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-primary">Featured Products</h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="bg-neutral-bg animate-pulse rounded-lg h-64"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (products.length === 0) {
+    return null
+  }
 
   return (
     <div className="bg-white py-4 sm:py-6 md:py-8">
@@ -70,18 +90,19 @@ const FeaturedProducts = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
-          {products.map((product, index) => (
+          {products.map((product) => (
             <ProductCard
-              key={index}
+              key={product.id}
               image={product.image}
               name={product.name}
-              category={product.category}
+              category={product.category || 'Uncategorized'}
               price={product.price}
-              originalPrice={product.originalPrice}
+              originalPrice={product.mrp > product.price ? product.mrp : undefined}
               discount={product.discount}
               rating={product.rating}
               reviews={product.reviews}
               href={product.href}
+              variants={product.variants || []}
             />
           ))}
         </div>

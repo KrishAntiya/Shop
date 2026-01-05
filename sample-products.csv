@@ -1,0 +1,17 @@
+item_code,name,brand,category,mrp,price,stock,description
+PROD001,Calcium Supplement for Cattle,BovineCare,Supplements,799.00,599.00,150,High-quality calcium supplement for dairy and beef cattle. Promotes bone strength and milk production.
+PROD002,Liver Tonic Syrup,VetPharma,Medicines,449.00,349.00,85,Herbal liver tonic for improved liver function and digestion in animals.
+PROD003,Mineral Mixture Powder,AgriVet,Supplements,1199.00,899.00,200,Premium mineral mixture for cattle and buffalo. Contains essential vitamins and minerals.
+PROD004,Energy Booster Injection,AnimalCare,Medicines,599.00,449.00,50,Injectable energy booster for weak and debilitated animals.
+PROD005,Antibiotic Tablets 500mg,VetMed,Antibiotics,299.00,249.00,300,Broad-spectrum antibiotic tablets for bacterial infections in animals.
+PROD006,De-worming Syrup for Dogs,PetCare,Medicines,399.00,299.00,120,Effective de-worming syrup for dogs. Eliminates roundworms, hookworms, and tapeworms.
+PROD007,Disinfectant Solution 1L,CleanVet,Disinfectants,549.00,449.00,75,Powerful disinfectant for animal housing and equipment. Kills 99.9% of germs.
+PROD008,Vitamin B Complex Injection,VitaminPlus,Supplements,449.00,349.00,90,Vitamin B complex injection for improved appetite and energy levels.
+PROD009,Antibacterial Ointment 30g,HealPharma,Medicines,249.00,199.00,180,Topical antibacterial ointment for wound healing and skin infections.
+PROD010,Feed Supplement for Poultry,PoultryMax,Supplements,899.00,699.00,250,Specialized feed supplement for poultry. Enhances egg production and growth.
+PROD011,Antiparasitic Drops for Cats,PetCare,Medicines,349.00,279.00,95,Spot-on antiparasitic treatment for cats. Prevents fleas and ticks.
+PROD012,Fever Reducer Tablets,QuickRelief,Medicines,199.00,159.00,200,Fast-acting fever reducer tablets for animals. Paracetamol-based formulation.
+PROD013,Iron Supplement Syrup,VitaminPlus,Supplements,399.00,299.00,110,Iron supplement syrup for treating anemia in cattle and other animals.
+PROD014,Wound Care Spray 100ml,HealPharma,Medicines,449.00,349.00,140,Antiseptic wound care spray for quick healing of cuts and wounds.
+PROD015,Probiotic Powder 200g,DigestWell,Supplements,599.00,449.00,160,Probiotic powder for maintaining healthy gut flora in animals.
+

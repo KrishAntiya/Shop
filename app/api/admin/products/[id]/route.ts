@@ -59,6 +59,7 @@ export async function PUT(
       name,
       brand_id,
       category,
+      animal,
       mrp,
       price,
       stock,
@@ -90,7 +91,7 @@ export async function PUT(
 
     await query(
       `UPDATE products SET
-       item_code = ?, name = ?, slug = ?, brand_id = ?, category = ?,
+       item_code = ?, name = ?, slug = ?, brand_id = ?, category = ?, animal = ?,
        mrp = ?, price = ?, stock = ?, description = ?, image = ?, status = ?
        WHERE id = ?`,
       [
@@ -99,6 +100,7 @@ export async function PUT(
         slug,
         brand_id || null,
         category || null,
+        animal || null,
         mrp,
         price,
         stock || 0,

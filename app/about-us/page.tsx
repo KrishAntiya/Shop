@@ -116,6 +116,79 @@ const AboutUs = () => {
             </div>
           </div>
 
+          {/* Team Section */}
+          <div className="bg-white rounded-xl border border-neutral-border shadow-sm hover:shadow-md transition-shadow duration-200 p-8 sm:p-10 md:p-12 mb-8 md:mb-12">
+            <section>
+              <h2 className="font-heading text-xl sm:text-2xl font-semibold text-neutral-text mb-4 text-center">
+                Team
+              </h2>
+              <p className="font-sans text-neutral-text leading-relaxed font-normal mb-8 text-center max-w-3xl mx-auto">
+                Our talented team of website developers has brought SwastikPharma to life with cutting-edge technology, 
+                user-friendly design, and seamless functionality. They have built a robust platform that makes 
+                veterinary products easily accessible to customers across India.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div className="bg-neutral-bg rounded-xl border border-neutral-border shadow-sm hover:shadow-md transition-all duration-200 p-6 flex flex-col items-center text-center">
+                  {/* Team Member Photo */}
+                  <div className="relative w-32 h-32 mb-4 rounded-full overflow-hidden border-2 border-neutral-border">
+                    <Image
+                      src="/Krish antiya.jpeg"
+                      alt="Krish Antiya"
+                      fill
+                      className="object-cover"
+                      style={{ objectPosition: 'center 65%' }}
+                      loading="lazy"
+                      unoptimized
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Team Member Name */}
+                  <h3 className="font-heading text-lg font-semibold text-neutral-text mb-1">
+                    Krish Antiya
+                  </h3>
+                  
+                  {/* Role */}
+                  <p className="font-sans text-sm font-medium text-secondary">
+                    Website Developer
+                  </p>
+                </div>
+
+                <div className="bg-neutral-bg rounded-xl border border-neutral-border shadow-sm hover:shadow-md transition-all duration-200 p-6 flex flex-col items-center text-center">
+                  {/* Team Member Photo */}
+                  <div className="relative w-32 h-32 mb-4 rounded-full overflow-hidden border-2 border-neutral-border">
+                    <Image
+                      src="/vansh antiya.jpeg"
+                      alt="Vansh Antiya"
+                      fill
+                      className="object-cover"
+                      style={{ objectPosition: 'center 65%' }}
+                      loading="lazy"
+                      unoptimized
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Team Member Name */}
+                  <h3 className="font-heading text-lg font-semibold text-neutral-text mb-1">
+                    Vansh Antiya
+                  </h3>
+                  
+                  {/* Role */}
+                  <p className="font-sans text-sm font-medium text-secondary">
+                    Website Developer
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
           {/* Why Choose Us Section */}
           <div className="bg-white rounded-xl border border-neutral-border shadow-sm hover:shadow-md transition-shadow duration-200 p-8 sm:p-10 md:p-12">
             <section>

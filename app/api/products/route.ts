@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '10')
     const category = searchParams.get('category')
     const brand_id = searchParams.get('brand_id')
+    const animal = searchParams.get('animal')
     const featured = searchParams.get('featured') === 'true'
     const sort = searchParams.get('sort') || 'created_at' // created_at, price_asc, price_desc
 
@@ -19,6 +20,7 @@ export async function GET(request: NextRequest) {
         p.name,
         p.slug,
         p.category,
+        p.animal,
         p.mrp,
         p.price,
         p.stock,
@@ -40,6 +42,11 @@ export async function GET(request: NextRequest) {
     if (brand_id) {
       sql += ` AND p.brand_id = ?`
       params.push(parseInt(brand_id))
+    }
+
+    if (animal) {
+      sql += ` AND p.animal = ?`
+      params.push(animal)
     }
 
     // Sort by

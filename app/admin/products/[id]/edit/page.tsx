@@ -10,6 +10,7 @@ interface Product {
   name: string
   brand_id: number | null
   category: string | null
+  animal: string | null
   mrp: number
   price: number
   stock: number
@@ -67,6 +68,7 @@ export default function EditProductPage() {
     name: '',
     brand_id: '',
     category: '',
+    animal: '',
     mrp: '',
     price: '',
     stock: '',
@@ -102,6 +104,7 @@ export default function EditProductPage() {
           name: p.name || '',
           brand_id: p.brand_id ? String(p.brand_id) : '',
           category: p.category || '',
+          animal: p.animal || '',
           mrp: String(p.mrp || ''),
           price: String(p.price || ''),
           stock: String(p.stock || ''),
@@ -256,6 +259,7 @@ export default function EditProductPage() {
         name: formData.name.trim(),
         brand_id: formData.brand_id ? parseInt(formData.brand_id) : null,
         category: formData.category.trim() || null,
+        animal: formData.animal || null,
         mrp: parseFloat(formData.mrp),
         price: parseFloat(formData.price),
         stock: parseInt(formData.stock) || 0,
@@ -397,6 +401,25 @@ export default function EditProductPage() {
                 className="w-full px-4 py-2 border border-neutral-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="e.g., Medicines, Supplements"
               />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-neutral-text mb-2">
+                Animal
+              </label>
+              <select
+                value={formData.animal}
+                onChange={(e) => setFormData({ ...formData, animal: e.target.value })}
+                className="w-full px-4 py-2 border border-neutral-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              >
+                <option value="">Select Animal</option>
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Large Animals">Large Animals</option>
+                <option value="Sheep & Goat">Sheep & Goat</option>
+                <option value="Poultry">Poultry</option>
+                <option value="Horse">Horse</option>
+              </select>
             </div>
 
             <div>

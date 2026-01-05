@@ -102,6 +102,7 @@ export async function POST(request: NextRequest) {
       name,
       brand_id,
       category,
+      animal,
       mrp,
       price,
       stock,
@@ -130,14 +131,15 @@ export async function POST(request: NextRequest) {
 
     const result = await query(
       `INSERT INTO products 
-       (item_code, name, slug, brand_id, category, mrp, price, stock, description, image, status)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+       (item_code, name, slug, brand_id, category, animal, mrp, price, stock, description, image, status)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         item_code,
         name.trim(),
         slug,
         brand_id || null,
         category || null,
+        animal || null,
         mrp,
         price,
         stock || 0,

@@ -32,30 +32,30 @@ interface Product {
   variants?: Variant[]
 }
 
-const animalConfig: { [key: string]: { name: string; categories: string[] } } = {
+const animalConfig: { [key: string]: { name: string; dbValue: string } } = {
   'dog': {
     name: 'Dog',
-    categories: ['Dog Food', 'Dog Medicine', 'Dog Vaccine', 'Dog Supplements', 'Dog Care']
+    dbValue: 'Dog'
   },
   'cat': {
     name: 'Cat',
-    categories: ['Cat Food', 'Cat Medicine', 'Cat Vaccine', 'Cat Supplements', 'Cat Care']
+    dbValue: 'Cat'
   },
   'large-animals': {
     name: 'Large Animals',
-    categories: ['Cattle Feed', 'Cattle Medicine', 'Cattle Vaccine', 'Cattle Supplements', 'Large Animal Care']
+    dbValue: 'Large Animals'
   },
   'sheep-goat': {
     name: 'Sheep & Goat',
-    categories: ['Sheep Feed', 'Goat Feed', 'Sheep Medicine', 'Goat Medicine', 'Sheep & Goat Vaccine', 'Sheep & Goat Supplements']
+    dbValue: 'Sheep & Goat'
   },
   'poultry': {
     name: 'Poultry',
-    categories: ['Poultry Feed', 'Poultry Medicine', 'Poultry Vaccine', 'Poultry Supplements', 'Poultry Care']
+    dbValue: 'Poultry'
   },
   'horse': {
     name: 'Horse',
-    categories: ['Horse Feed', 'Horse Medicine', 'Horse Vaccine', 'Horse Supplements', 'Horse Care']
+    dbValue: 'Horse'
   }
 }
 
@@ -65,6 +65,7 @@ export default function AnimalProductsPage() {
 
   const [allProducts, setAllProducts] = useState<Product[]>([])
   const [products, setProducts] = useState<Product[]>([])
+  const [categories, setCategories] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   
@@ -74,7 +75,6 @@ export default function AnimalProductsPage() {
   const [searchQuery, setSearchQuery] = useState<string>('')
 
   const animalInfo = animalConfig[slug] || null
-  const categories = animalInfo?.categories || []
 
   useEffect(() => {
     if (slug && animalInfo) {
@@ -93,8 +93,8 @@ export default function AnimalProductsPage() {
   const fetchProducts = async () => {
     try {
       setLoading(true)
-      // Fetch all products and filter client-side by category matching
-      const res = await fetch('/api/products?limit=200')
+      // Fetch products filtered by animal field
+      const res = await fetch(`/api/products?animal=${encodeURIComponent(animalInfo.dbValue)}&limit=200`)
       const data = await res.json()
 
       if (!res.ok) {
@@ -104,20 +104,13 @@ export default function AnimalProductsPage() {
       }
 
       if (data.success && data.products) {
-        // Filter products by animal-specific categories
-        const animalNameLower = animalInfo.name.toLowerCase()
-        const filtered = data.products.filter((product: Product) => {
-          if (!product.category) return false
-          const productCat = product.category.toLowerCase()
-          // Check if product category matches any of the animal's categories
-          return categories.some(cat => {
-            const animalCat = cat.toLowerCase()
-            // Match if product category contains animal category keywords
-            return productCat.includes(animalCat)
-          }) || productCat.includes(animalNameLower)
-        })
-        setAllProducts(filtered)
-        setProducts(filtered)
+        setAllProducts(data.products)
+        setProducts(data.products)
+        // Extract unique categories from products for filter dropdown
+        const uniqueCategories = Array.from(
+          new Set(data.products.map((p: Product) => p.category).filter(Boolean))
+        ).sort() as string[]
+        setCategories(uniqueCategories)
       }
     } catch (err) {
       setError('Failed to load products')
